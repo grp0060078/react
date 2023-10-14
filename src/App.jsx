@@ -1,6 +1,6 @@
 const App=() => {
   return (
-    <p>hello world!</p>
+    <p>hello india</p>
   )
 }
 export default App;
