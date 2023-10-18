@@ -1,43 +1,33 @@
+import React, { useState } from 'react';
+import Button from './components/Button';
 
-import React, { Component } from 'react';
+function App() {
 
-class App extends Component {
+  const [counter, setCounter] = useState(0);
 
-  constructor(props) {
-    super(props); // to call the parent class constructor
 
-    // define the state
-    this.state = {
-      addcart:false
-    }
+  function handleClick() {
+    setCounter(counter + 1);
   }
 
-  removecart = () => {
-    // update the state (data) of the count
-    this.setState({
-      // provide the new state
-      addcart:!this.state.addcart
-      }
-    )
-  }
-
+  function handleMinusClick() {
+    setCounter(counter - 1);
+  } 
   
   
-
-  render() {
-    return (
-      <div>
-        {this.state.addcart ? (
-          <button onClick={this.removecart}>addcart</button>
-        )
-        
-       : (
-        <button onClick={this.removecart}>Removecart</button>
-       )
-        }
-      </div>
-    )
+  function handleZeroClick() {
+    setCounter(0);
   }
+
+
+  return (
+    <div>
+      <p>{ counter }</p>
+      <button onClick={handleClick}>plus</button>
+     <Button handleMinusClick={handleMinusClick}/>
+      <button onClick={handleZeroClick}>Zero</button>
+    </div>
+  )
 }
 
 export default App;
