@@ -1,33 +1,23 @@
-import React, { useState } from 'react';
-import Button from './components/Button';
 
-function App() {
+import React, { useState, createContext, } from 'react';
+import Profile from './components/profile.jsx'
 
-  const [counter, setCounter] = useState(0);
+const ProfileContext = createContext();
 
 
-  function handleClick() {
-    setCounter(counter + 1);
-  }
-
-  function handleMinusClick() {
-    setCounter(counter - 1);
-  } 
+function App  ()  {
   
-  
-  function handleZeroClick() {
-    setCounter(0);
-  }
-
+  const [profileName, setProfileName] = useState('');
 
   return (
-    <div>
-      <p>{ counter }</p>
-      <button onClick={handleClick}>plus</button>
-     <Button handleMinusClick={handleMinusClick}/>
-      <button onClick={handleZeroClick}>Zero</button>
-    </div>
-  )
-}
 
-export default App;
+    <ProfileContext.Provider value={{ profileName, setProfileName }}>
+      <Profile />
+    </ProfileContext.Provider>
+  );
+};
+
+
+
+
+export { App as default, ProfileContext };
